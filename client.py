@@ -36,6 +36,10 @@ class SemRushClient:
         self.default_database: str = default_database
         self._cost: int = 0
 
+    @property
+    def cost(self):
+        return self._cost
+
     def dict_to_call(self, api_dict: dict):
         call_list = [self.endpoint, "?"]
         call_list.extend(["key=", self.key])
