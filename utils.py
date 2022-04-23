@@ -1,10 +1,16 @@
 from .client import SemRushClient
 
 
+def load_from_key(key: str,
+                  default_database: str = "uk") -> SemRushClient:
+    return SemRushClient(api_key=key,
+                         default_database=default_database)
+
+
 def load_from_string(string: str,
                      default_database: str = "uk") -> SemRushClient:
     api_key = string.split(":")[1].strip()
-    return SemRushClient(api_key=api_key,
+    return load_from_key(key=api_key,
                          default_database=default_database)
 
 
