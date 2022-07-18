@@ -571,7 +571,7 @@ class SemRushClient:
                                 database: str = None,
                                 display_limit: int = 50,
                                 display_offset: int = 0,
-                                display_sort: str = "dt_asc",
+                                display_sort: str = "dt_desc",
                                 export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
         if database is None:
