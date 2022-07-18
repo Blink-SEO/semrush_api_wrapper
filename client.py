@@ -22,7 +22,8 @@ cost_per_line_dict = {
     "phrase_adwords_historical": 100,
     "phrase_fullsearch": 20,
     "phrase_questions": 40,
-    "phrase_kdi": 50
+    "phrase_kdi": 50,
+    "domain_rank_history": 10
 }
 
 
@@ -565,6 +566,31 @@ class SemRushClient:
 
         return self.make_call(api_dict=api_dict, raw_text=True)
 
+    def domain_overview_history(self,
+                                domain: str,
+                                database: str = None,
+                                display_limit: int = 50,
+                                display_offset: int = 0,
+                                display_sort: str = "dt_asc",
+                                export_columns: List[str] = None) -> Optional[pd.DataFrame]:
+
+        if database is None:
+            database = self.default_database
+        if export_columns is None:
+            export_columns = ["Rk", "Or", "Xn", "Ot", "Oc", "Ad", "At", "Ac", "Dt", "FKn", "FPn"]
+
+        api_dict = {
+            "type": "domain_rank_history",
+            "domain": domain,
+            "database": database,
+            "display_limit": display_limit,
+            "display_offset": display_offset,
+            "display_sort": display_sort,
+            "export_columns": export_columns,
+        }
+
+        return self.make_call(api_dict=api_dict)
+
 
 def default_date():
     _d = datetime.datetime.today() + rd.relativedelta(months=-1)
@@ -572,6 +598,6 @@ def default_date():
 
 
 def clean_columns(df: pd.DataFrame) -> pd.DataFrame:
-    columns_dict = {col: "sr_"+col.lower().replace("(%)", "pc").replace(" ", "_") for col in df.columns}
+    columns_dict = {col: "sr_" + col.lower().replace("(%)", "pc").replace(" ", "_") for col in df.columns}
     columns_dict.update({"Keyword": "phrase"})
     return df.rename(columns=columns_dict)
