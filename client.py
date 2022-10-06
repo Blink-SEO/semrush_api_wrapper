@@ -58,7 +58,7 @@ class SemRushClient:
                   raw_text: bool = False) -> Union[pd.DataFrame, str, None]:
 
         if "database" in api_dict.keys():
-            api_dict['database'] = parse_database(database=api_dict.get('database'),
+            api_dict['database'] = parse_database(database_code=api_dict.get('database'),
                                                   if_none=self.default_database)
 
         api_call = self.dict_to_call(api_dict=api_dict)
