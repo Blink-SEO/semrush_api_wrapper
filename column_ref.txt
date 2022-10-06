@@ -1,0 +1,122 @@
+Ab	The place on a SERP where an ad appeared (top, side, or bottom blocks).
+Ac	Estimated budget spent buying keywords in Google AdWords for ads that appear in paid search results (monthly estimation).
+Ad	Keywords a website is buying in Google AdWords for ads that appear in paid search results.
+Am	Changes in the number of paid keywords.
+At	Traffic brought to the website via paid search results.
+Bm	Changes in paid traffic.
+Cg	The total cost of all traffic driven to an analyzed domain with a given keyword over a specific period of time.
+Cm	Changes in paid traffic price.
+Co	Competitive density of advertisers using the given term for their ads. One (1) means the highest competition.
+Cp	Average price in US dollars advertisers pay for a user's click on an ad containing a particular keyword (Google AdWords).
+Cr	Competition level based on the total number of keywords of each domain and the number of keywords the domains have in common.
+Cv	Keyword coverage represents the percentage of ads displayed for a particular keyword in the last 12 months (100% = 12 months).
+Db	Regional database (US, UK, Italy, etc.)
+Dn	Domain name.
+Ds	Ad text.
+Dt	Actual date.
+Fk	All SERP Features triggered by a keyword. List of available SERP Features
+Fp	SERP features in which a domain appears on SERP for a keyword. List of available SERP Features
+Fl	(deprecated) SERP features in which a domain appears on SERP for a keyword. List of available SERP Features
+FKn	The total number of SERP Features triggered by the keywords that your domain ranks for. Columns with specified numbers should be separated with commas: FK1,FK2..FKn, where n is the number of a SERP feature from this list.
+FPn	The total number of SERP Features that your domain ranks in. Columns with changed numbers should be separated with commas: FP1,FP2..FPn, where n is the number of a SERP feature from this list.
+Hs	This columns shows whether or not a report's line returns historical data.
+Ip	IP address.
+In	Keyword intents (0 - Commercial, 1 - Informational, 2 - Navigational, 3 - Transactional).
+Ipu	The total number of positions with unknown intent.
+Ip0	The total number of positions with the Commercial intent.
+Ip1	The total number of positions with the Informational intent.
+Ip2	The total number of positions with the Navigational intent.
+Ip3	The total number of positions with the Transactional intent.
+Itu	The total amount of traffic with unknown intent.
+It0	The total amount of traffic with the Commercial intent.
+It1	The total amount of traffic with the Informational intent.
+It2	The total amount of traffic with the Navigational intent.
+It3	The total amount of traffic with the Transactional intent.
+Icu	The total cost of traffic with unknown intent.
+Ic0	The total cost of traffic with the Commercial intent.
+Ic1	The total cost of traffic with the Informational intent.
+Ic2	The total cost of traffic with the Navigational intent.
+Ic3	The total cost of traffic with the Transactional intent.
+Kd	An estimate of how difficult it would be to rank well in organic search results for a particular keyword. The higher the percentage, the harder it is to achieve high rankings for the given keyword.
+Lc	Number of API units per line.
+Li	Number of lines requested for a report by a particular user.
+Np	Common keywords that domains are ranking for in Google's top 100 organic search results.
+Nq	The average number of times users have searched for a given keyword per month. We calculate this value over the last 12 months.
+Nr	The total number of organic results returned for a given keyword at the last date of collection.
+Oc	Estimated price of organic keywords in Google AdWords.
+Of	Value of a parameter display_offset requested by a particular user.
+Om	Changes in the number of organic keywords.
+Or	Keywords that bring users to a website via Google's top 100 organic search results.
+Xn	Organic Position Distribution. Keywords bringing users to the website via Google's top 100 organic search results are grouped depending on the domain’s ranking for them. Columns with specified numbers should be separated with commas: X0,X1..Xn, where n is: 0: 1-3, 1: 4-10, 2: 11-20, 3: 21-30, 4: 31-40, 5: 41-50, 6: 51-60, 7: 61-70, 8: 71-80, 9: 81-90, a: 91-100+
+Ot	Traffic brought to a website via Google's top 100 organic search results.
+P0	A position of the first queried domain for a particular keyword in Google's top 100 organic or paid search results.
+P1	A position of the second queried domain for a particular keyword in Google's top 100 organic or paid search results.
+P2	A position of the third queried domain for a particular keyword in Google's top 100 organic or paid search results.
+P3	A position of the fourth queried domain for a particular keyword in Google's top 100 organic or paid search results.
+P4	A position of the fifth queried domain for a particular keyword in Google's top 100 organic or paid search results.
+Pc	Number of keywords.
+Pd	The difference between the previous position a domain was earning with a particular keyword and its current position.
+Ph	Keyword bringing users to the website via Google's top 100 organic search results.
+Po	Position a URL gets with a particular keyword in Google's top 100 organic or paid search results.
+Pp	A position a domain gets with a particular keyword in Google's top 100 organic or paid search results.
+Pr	Price of promoted product
+Rh	The SEMrush rating of the website's popularity based on organic traffic coming from Google's top 100 organic search results.
+Rk	The SEMrush rating of the website's popularity based on organic traffic coming from Google's top 100 organic search results.
+Rr	This indicator reflects the degree of relevance of result keyword to the seed keyword.
+Rt	Report type
+Sh	Number of keywords the website is using for product listing ads.
+Sn	Shop name
+Sv	Number of unique product listing ads (PLA Copies)
+Tc	The percentage of the domain's total traffic cost that is attributed to a particular keyword.
+Tg	The amount of estimated organic traffic driven to an analyzed domain with a given keyword over a specific period of time.
+Td	The interest of searchers in a particular keyword during the last 12 months. This metric is based on changes in the number of queries per month.
+Tm	Changes in organic traffic.
+Tr	The share of traffic driven to the website with a particular keyword for a specified period.
+Ts	UNIX Timestamp.
+Tt	Ad title.
+Um	Changes in organic traffic cost.
+Un	Ad id
+Ur	The URL of the target page (Backlinks).
+Vu	Visible URL.
+ads_count	The total number of all types of display ads (media and text) during a specified period.
+ads_overall	The total number of all types of display ads (media and text) for all time.
+advertisers_count	The total number of advertisers on Google’s Display Network where a publisher promoted a website in the last 7 days.
+advertisers_overall	The total number of advertisers on Google’s Display Network where a publisher promoted a website.
+anchor	A clickable text of a backlink.
+avg_positions	An average position of an ad.
+domain	Domain name.
+domain_overall	The total number of advertisers on Google’s Display Network where a publisher promoted a website, or the total number of publishers’ websites where the display ads of an advertiser's website appeared during a whole period.
+external_num	The number of the source page’s links that point to other websites’ pages.
+first_seen	The timestamp on which SEMrush first noticed a backlink.
+image_alt	A URL of an image backlink's location.
+internal_num	The number of the source page’s links that point to webpages of the same website.
+last_seen	The timestamp on which SEMrush last noticed a backlink.
+media_ads_count	The total number of media display ads of an advertiser SEMrush has noticed during a specified period.
+media_ads_overall	The total number of an advertiser’s media display ads SEMrush has noticed for a whole period.
+media_type	The display ad’s type of media.
+publishers_count	The total number of publishers’ websites where display ads of an advertiser's website appeared in the last 7 days.
+publishers_overall	The total number of publishers’ websites where the display ads of an advertiser's website appeared during a whole period.
+redirect_url	The last URL in a redirect chain.
+response_code	Server response code.
+source_title	The title of the source page.
+source_size	The source page‘s size in bytes.
+source_url	The URL of the source page.
+target_title	The title of the target page.
+target_url	The URL of the target page (Backlinks).
+target_url	The landing page of a display ad (Display Advertising).
+text	The text of a display ad.
+text_ads_count	The total number of display ads during a specified period.
+text_ads_overall	The total number of display ads SEMrush noticed for a whole period.
+times_seen	The number of times SEMrush saw a display ad.
+title	The title of a display ad.
+type	The metrics indicates the backlink type
+visible_url	A visible URL of a display ad.
+ascore	Authority Score is our proprietary metric used to measure overall quality of domain/URL and influence on SEO. The score is based on the number of backlinks, referring domains, organic search traffic, and other data.
+domain_ascore	Domain Authority Score is our proprietary metric used to measure overall quality of domain and influence on SEO. The score is based on the number of backlinks, referring domains, organic search traffic, and other data.
+page_ascore	Page Authority Score is our proprietary metric used to measure overall quality of URL and influence on SEO. The score is based on the number of backlinks, referring domains, organic search traffic, and other data.
+category_name	Name of the category. Categories may consist of one, two or three levels. Levels are divided by a slash (/). Example of one-level category: “/Business & Industrial”. Example of three-level category: “/Internet & Telecom/Web Services/Web Design & Development”
+neighbour	A domain with a similar backlink profile to the analyzed domain.
+similarity	This metric is calculated based on the number of referring domains to each competitor and the total number of common referring domains to all competitors. If websites have a large number of common referring domains, they can be considered competitors.
+common_refdomains	The number of referring domains that link back to both the analyzed and competing domains.
+domains_num	The total number of domains, including common referring domains, linking to a given domain.
+backlinks_num	The number of backlinks to a given domain.
