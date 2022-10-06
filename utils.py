@@ -1,8 +1,10 @@
 import pandas as pd
+import os
+
 from .client import SemRushClient
 
 
-with open('column_ref.txt', "r") as f:
+with open(os.path.dirname(__file__) + r'/column_ref.txt', "r") as f:
     column_ref_string = f.read()
 _rows = [_.split('\t') for _ in column_ref_string.split('\n')]
 COLUMN_REF = {_r[0]: _r[1] for _r in _rows}

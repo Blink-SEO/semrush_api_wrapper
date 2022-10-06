@@ -1,6 +1,10 @@
 import csv
 import os
 
+with open(os.path.dirname(__file__) + r'/new_iso_lookup.csv', mode='r') as infile:
+    reader = csv.reader(infile)
+    ISO_DICT = {rows[3]: rows[5] for rows in reader}
+
 
 def parse_database(database_code: str,
                    if_none: str = 'us'):
@@ -18,7 +22,4 @@ def iso_to_domain(iso_code: str):
     elif iso_code == "USA":
         return "us"
     else:
-        with open(os.path.dirname(__file__) + r'/country_iso_codes.csv', mode='r') as infile:
-            reader = csv.reader(infile)
-            isodict = {rows[2]: rows[4] for rows in reader}
-        return isodict.get(iso_code, 'zz')
+        return ISO_DICT.get(iso_code, 'zz')
