@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 import re
 from typing import List, Optional, Union
-from database_utils import parse_database
+from .database_utils import parse_database
 
 cost_per_line_dict = {
     "domain_organic": 10,
