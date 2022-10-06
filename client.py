@@ -349,6 +349,26 @@ class SemRushClient:
 
         return self.make_call(api_dict=api_dict)
 
+    def big_batch_keyword_overview(self,
+                                   phrases: List[str],
+                                   database: str = None,
+                                   display_date: str = None,
+                                   export_columns: List[str] = None,
+                                   partition_size: int = 100) -> Optional[pd.DataFrame]:
+
+        phrases_partitions = [phrases[i:i + partition_size] for i in range(0, len(phrases), partition_size)]
+
+        frames = []
+        for _part in phrases_partitions:
+            frames.append(
+                self.batch_keyword_overview(phrases=_part,
+                                            database=database,
+                                            display_date=display_date,
+                                            export_columns=export_columns)
+            )
+
+        return pd.concat(frames)
+
     def batch_keyword_overview(self,
                                phrases: List[str],
                                database: str = None,
@@ -363,6 +383,13 @@ class SemRushClient:
         if display_date is None:
             display_date = default_date()
         display_date = display_date[:-2] + "15"
+
+        if len(phrases) > 100:
+            return self.big_batch_keyword_overview(phrases=phrases,
+                                                   database=database,
+                                                   display_date=display_date,
+                                                   export_columns=export_columns,
+                                                   partition_size=100)
 
         api_dict = {
             "type": "phrase_these",
