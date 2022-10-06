@@ -4,6 +4,7 @@ import pandas as pd
 import requests
 import re
 from typing import List, Optional, Union
+from database_utils import parse_database
 
 cost_per_line_dict = {
     "domain_organic": 10,
@@ -55,6 +56,11 @@ class SemRushClient:
     def make_call(self,
                   api_dict,
                   raw_text: bool = False) -> Union[pd.DataFrame, str, None]:
+
+        if "database" in api_dict.keys():
+            api_dict['database'] = parse_database(database=api_dict.get('database'),
+                                                  if_none=self.default_database)
+
         api_call = self.dict_to_call(api_dict=api_dict)
         response = requests.get(url=api_call)
 
@@ -91,8 +97,6 @@ class SemRushClient:
                                        display_filter: List[str] = None,
                                        display_positions: str = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Po", "Pp", "Pd", "Nq", "Cp", "Ur",
                               "Tr", "Tc", "Co", "Nr", "Td"]
@@ -129,8 +133,6 @@ class SemRushClient:
                                     display_filter: List[str] = None,
                                     display_positions: str = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Po", "Pp", "Pd", "Ab", "Nq", "Cp",
                               "Tg", "Tr", "Tc", "Co", "Nr", "Td", "Tt",
@@ -167,8 +169,6 @@ class SemRushClient:
                                     export_columns: List[str] = None,
                                     display_filter: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Po", "Pp", "Nq", "Cp", "Co", "Kd",
                               "Tr", "Tg", "Tc", "Nr", "Td", "Fp", "Fk",
@@ -203,8 +203,6 @@ class SemRushClient:
                                  export_columns: List[str] = None,
                                  display_filter: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Po", "Nq", "Cp", "Co", "Tg", "Tr",
                               "Tc", "Nr", "Td", "Tt", "Ds", "Ts"]
@@ -237,8 +235,6 @@ class SemRushClient:
                             display_date: str = None,
                             export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Dn", "Cr", "Np", "Or", "Ot", "Oc", "Ad"]
         if display_date is None:
@@ -267,8 +263,6 @@ class SemRushClient:
                          display_date: str = None,
                          export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Dn", "Cr", "Np", "Ad", "At", "Ac", "Or"]
         if display_date is None:
@@ -300,8 +294,6 @@ class SemRushClient:
                          export_columns: List[str] = None,
                          display_filter: str = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "P0", "P1", "P2", "P3", "P4", "Nr", "Cp", "Nq", "Kd", "Co", "Td"]
         if display_date is None:
@@ -331,8 +323,6 @@ class SemRushClient:
                          export_columns: List[str] = None) -> Optional[pd.DataFrame]:
         # https://developer.semrush.com/api/v3/analytics/keyword-reports/#keyword-overview-one-database/
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Nq", "Cp", "Co", "Nr", "Td", "In"]
         if display_date is None:
@@ -376,8 +366,6 @@ class SemRushClient:
                                export_columns: List[str] = None) -> Optional[pd.DataFrame]:
         # https://developer.semrush.com/api/v3/analytics/keyword-reports/#keyword-overview-one-database/
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Nq", "Cp", "Co", "Nr", "Td", "In"]
         if display_date is None:
@@ -409,8 +397,6 @@ class SemRushClient:
                         export_columns: List[str] = None) -> Optional[pd.DataFrame]:
         # https://developer.semrush.com/api/v3/analytics/keyword-reports/#keyword-overview-one-database/
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Dn", "Ur", "Fk", "Fp"]
         if display_date is None:
@@ -436,8 +422,6 @@ class SemRushClient:
                      export_columns: List[str] = None) -> Optional[pd.DataFrame]:
         # https://developer.semrush.com/api/v3/analytics/keyword-reports/#keyword-overview-one-database/
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Dn", "Ur", "Vu"]
         if display_date is None:
@@ -466,8 +450,6 @@ class SemRushClient:
                          display_filter: List[str] = None,
                          display_positions: str = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Nq", "Cp", "Co", "Nr", "Td", "Rr",
                               "Fk", "In"]
@@ -500,8 +482,6 @@ class SemRushClient:
                             display_offset: int = 0,
                             export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Dn", "Dt", "Po", "Ur", "Tt", "Ds", "Vu", "At", "Ac", "Ad"]
 
@@ -525,8 +505,6 @@ class SemRushClient:
                             export_columns: List[str] = None,
                             display_filter: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Nq", "Cp", "Co", "Nr", "Td", "Fk", "In"]
 
@@ -554,8 +532,6 @@ class SemRushClient:
                          export_columns: List[str] = None,
                          display_filter: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Nq", "Cp", "Co", "Nr", "Td", "In"]
 
@@ -579,8 +555,6 @@ class SemRushClient:
                            database: str = None,
                            export_columns: List[str] = None) -> str:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Ph", "Kd"]
 
@@ -601,8 +575,6 @@ class SemRushClient:
                                 display_sort: str = "dt_desc",
                                 export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
-        if database is None:
-            database = self.default_database
         if export_columns is None:
             export_columns = ["Rk", "Or", "Xn", "Ot", "Oc", "Ad", "At", "Ac", "Dt", "FKn", "FPn"]
 

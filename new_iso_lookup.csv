@@ -1,0 +1,250 @@
+,Country,Alpha-2 code,Alpha-3 code,Numeric,Domain,Google_Site
+0,Afghanistan,AF,AFG,4,af,google.com.af
+1,Albania,AL,ALB,8,al,google.al
+2,Algeria,DZ,DZA,12,dz,google.dz
+3,American Samoa,AS,ASM,16,,
+4,Andorra,AD,AND,20,,
+5,Angola,AO,AGO,24,ao,google.co.ao
+6,Anguilla,AI,AIA,660,,
+7,Antarctica,AQ,ATA,10,,
+8,Antigua and Barbuda,AG,ATG,28,,
+9,Argentina,AR,ARG,32,ar,google.com.ar
+10,Armenia,AM,ARM,51,am,google.am
+11,Aruba,AW,ABW,533,,
+12,Australia,AU,AUS,36,au,google.com.au
+13,Austria,AT,AUT,40,at,google.at
+14,Azerbaijan,AZ,AZE,31,az,google.az
+15,Bahamas,BS,BHS,44,bs,google.bs
+16,Bahrain,BH,BHR,48,bh,google.com.bh
+17,Bangladesh,BD,BGD,50,bd,google.com.bd
+18,Barbados,BB,BRB,52,,
+19,Belarus,BY,BLR,112,by,google.by
+20,Belgium,BE,BEL,56,be,google.be
+21,Belize,BZ,BLZ,84,bz,google.com.bz
+22,Benin,BJ,BEN,204,,
+23,Bermuda,BM,BMU,60,,
+24,Bhutan,BT,BTN,64,,
+25,Bolivia,BO,BOL,68,bo,google.com.bo
+26,"""Bonaire,  Sint Eustatius and Saba""",BQ,BES,535,,
+27,Bosnia and Herzegovina,BA,BIH,70,ba,google.ba
+28,Botswana,BW,BWA,72,bw,google.co.bw
+29,Bouvet Island,BV,BVT,74,,
+30,Brazil,BR,BRA,76,br,google.com.br
+31,British Indian Ocean Territory,IO,IOT,86,,
+32,Brunei,BN,BRN,96,bn,google.com.bn
+33,Bulgaria,BG,BGR,100,bg,google.bg
+34,Burkina Faso,BF,BFA,854,,
+35,Burundi,BI,BDI,108,,
+36,Cabo Verde,CV,CPV,132,cv,google.cv
+37,Cambodia,KH,KHM,116,kh,google.com.kh
+38,Cameroon,CM,CMR,120,cm,google.cm
+39,Canada,CA,CAN,124,ca,google.ca
+40,Cayman Islands,KY,CYM,136,,
+41,Central African Republic,CF,CAF,140,,
+42,Chad,TD,TCD,148,,
+43,Chile,CL,CHL,152,cl,google.cl
+44,China,CN,CHN,156,,
+45,Christmas Island,CX,CXR,162,,
+46,Cocos,CC,CCK,166,,
+47,Colombia,CO,COL,170,co,google.com.co
+48,Comoros,KM,COM,174,,
+49,Congo,CD,COD,180,cd,google.cd
+50,Congo,CG,COG,178,cd,google.cd
+51,Cook Islands,CK,COK,184,,
+52,Costa Rica,CR,CRI,188,cr,google.co.cr
+53,Croatia,HR,HRV,191,hr,google.hr
+54,Cuba,CU,CUB,192,,
+55,Curaçao,CW,CUW,531,,
+56,Cyprus,CY,CYP,196,cy,google.com.cy
+57,Czech Republic,CZ,CZE,203,cz,google.cz
+58,Côte d'Ivoire,CI,CIV,384,,
+59,Denmark,DK,DNK,208,dk,google.dk
+60,Djibouti,DJ,DJI,262,,
+61,Dominica,DM,DMA,212,,
+62,Dominican Republic,DO,DOM,214,do,google.com.do
+63,Ecuador,EC,ECU,218,ec,google.com.ec
+64,Egypt,EG,EGY,818,eg,google.com.eg
+65,El Salvador,SV,SLV,222,sv,google.com.sv
+66,Equatorial Guinea,GQ,GNQ,226,,
+67,Eritrea,ER,ERI,232,,
+68,Estonia,EE,EST,233,ee,google.ee
+69,Eswatini,SZ,SWZ,748,,
+70,Ethiopia,ET,ETH,231,et,google.com.et
+71,Falkland Islands  [Malvinas],FK,FLK,238,,
+72,Faroe Islands,FO,FRO,234,,
+73,Fiji,FJ,FJI,242,,
+74,Finland,FI,FIN,246,fi,google.fi
+75,France,FR,FRA,250,fr,google.fr
+76,French Guiana,GF,GUF,254,,
+77,French Polynesia,PF,PYF,258,,
+78,French Southern Territories,TF,ATF,260,,
+79,Gabon,GA,GAB,266,,
+80,Gambia,GM,GMB,270,,
+81,Georgia,GE,GEO,268,ge,google.ge
+82,Germany,DE,DEU,276,de,google.de
+83,Ghana,GH,GHA,288,gh,google.com.gh
+84,Gibraltar,GI,GIB,292,,
+85,Greece,GR,GRC,300,gr,google.gr
+86,Greenland,GL,GRL,304,,
+87,Grenada,GD,GRD,308,,
+88,Guadeloupe,GP,GLP,312,,
+89,Guam,GU,GUM,316,,
+90,Guatemala,GT,GTM,320,gt,google.com.gt
+91,Guernsey,GG,GGY,831,,
+92,Guinea,GN,GIN,324,,
+93,Guinea-Bissau,GW,GNB,624,,
+94,Guyana,GY,GUY,328,gy,google.gy
+95,Haiti,HT,HTI,332,ht,google.ht
+96,Heard Island and McDonald Islands,HM,HMD,334,,
+97,Holy See,VA,VAT,336,,
+98,Honduras,HN,HND,340,hn,google.hn
+99,Hong Kong,HK,HKG,344,hk,google.com.hk
+100,Hungary,HU,HUN,348,hu,google.hu
+101,Iceland,IS,ISL,352,is,google.is
+102,India,IN,IND,356,in,google.co.in
+103,Indonesia,ID,IDN,360,id,google.co.id
+104,Iran,IR,IRN,364,,
+105,Iraq,IQ,IRQ,368,,
+106,Ireland,IE,IRL,372,ie,google.ie
+107,Isle of Man,IM,IMN,833,,
+108,Israel,IL,ISR,376,il,google.co.il
+109,Italy,IT,ITA,380,it,google.it
+110,Jamaica,JM,JAM,388,jm,google.com.jm
+111,Japan,JP,JPN,392,jp,google.co.jp
+112,Jersey,JE,JEY,832,,
+113,Jordan,JO,JOR,400,jo,google.jo
+114,Kazakhstan,KZ,KAZ,398,kz,google.kz
+115,Kenya,KE,KEN,404,,
+116,Kiribati,KI,KIR,296,,
+117,North Korea,KP,PRK,408,,
+118,South Korea,KR,KOR,410,kr,google.co.kr
+119,Kuwait,KW,KWT,414,kw,google.com.kw
+120,Kyrgyzstan,KG,KGZ,417,,
+121,Lao People's Democratic Republic,LA,LAO,418,,
+122,Latvia,LV,LVA,428,lv,google.lv
+123,Lebanon,LB,LBN,422,lb,google.com.lb
+124,Lesotho,LS,LSO,426,,
+125,Liberia,LR,LBR,430,,
+126,Libya,LY,LBY,434,ly,google.com.ly
+127,Liechtenstein,LI,LIE,438,,
+128,Lithuania,LT,LTU,440,lt,google.lt
+129,Luxembourg,LU,LUX,442,lu,google.lu
+130,Macao,MO,MAC,446,,
+131,Madagascar,MG,MDG,450,mg,google.mg
+132,Malawi,MW,MWI,454,,
+133,Malaysia,MY,MYS,458,my,google.com.my
+134,Maldives,MV,MDV,462,,
+135,Mali,ML,MLI,466,,
+136,Malta,MT,MLT,470,mt,google.com.mt
+137,Marshall Islands,MH,MHL,584,,
+138,Martinique,MQ,MTQ,474,,
+139,Mauritania,MR,MRT,478,,
+140,Mauritius,MU,MUS,480,mu,google.mu
+141,Mayotte,YT,MYT,175,,
+142,Mexico,MX,MEX,484,mx,google.com.mx
+143,Micronesia,FM,FSM,583,,
+144,Moldova,MD,MDA,498,md,google.md
+145,Monaco,MC,MCO,492,,
+146,Mongolia,MN,MNG,496,mn,google.mn
+147,Montenegro,ME,MNE,499,me,google.me
+148,Montserrat,MS,MSR,500,,
+149,Morocco,MA,MAR,504,ma,google.co.ma
+150,Mozambique,MZ,MOZ,508,mz,google.co.mz
+151,Myanmar,MM,MMR,104,,
+152,Namibia,NA,NAM,516,na,google.com.na
+153,Nauru,NR,NRU,520,,
+154,Nepal,NP,NPL,524,np,google.com.np
+155,Netherlands,NL,NLD,528,nl,google.nl
+156,New Caledonia,NC,NCL,540,,
+157,New Zealand,NZ,NZL,554,nz,google.co.nz
+158,Nicaragua,NI,NIC,558,ni,google.com.ni
+159,Niger,NE,NER,562,,
+160,Nigeria,NG,NGA,566,ng,google.com.ng
+161,Niue,NU,NIU,570,,
+162,Norfolk Island,NF,NFK,574,,
+163,Northern Mariana Islands,MP,MNP,580,,
+164,Norway,NO,NOR,578,no,google.no
+165,Oman,OM,OMN,512,om,google.com.om
+166,Pakistan,PK,PAK,586,,
+167,Palau,PW,PLW,585,,
+168,"""Palestine,  State of""",PS,PSE,275,,
+169,Panama,PA,PAN,591,,
+170,Papua New Guinea,PG,PNG,598,,
+171,Paraguay,PY,PRY,600,py,google.com.py
+172,Peru,PE,PER,604,pe,google.com.pe
+173,Philippines,PH,PHL,608,ph,google.com.ph
+174,Pitcairn,PN,PCN,612,,
+175,Poland,PL,POL,616,pl,google.pl
+176,Portugal,PT,PRT,620,pt,google.pt
+177,Puerto Rico,PR,PRI,630,,
+178,Qatar,QA,QAT,634,,
+179,Republic of North Macedonia,MK,MKD,807,,
+180,Romania,RO,ROU,642,ro,google.ro
+181,Russia,RU,RUS,643,ru,google.ru
+182,Rwanda,RW,RWA,646,,
+183,Réunion,RE,REU,638,,
+184,Saint Barthélemy,BL,BLM,652,,
+185,"""Saint Helena,  Ascension and Tristan da Cunha""",SH,SHN,654,,
+186,Saint Kitts and Nevis,KN,KNA,659,,
+187,Saint Lucia,LC,LCA,662,,
+188,Saint Martin,MF,MAF,663,,
+189,Saint Pierre and Miquelon,PM,SPM,666,,
+190,Saint Vincent and the Grenadines,VC,VCT,670,,
+191,Samoa,WS,WSM,882,,
+192,San Marino,SM,SMR,674,,
+193,Sao Tome and Principe,ST,STP,678,,
+194,Saudi Arabia,SA,SAU,682,sa,google.com.sa
+195,Senegal,SN,SEN,686,sn,google.sn
+196,Serbia,RS,SRB,688,rs,google.rs
+197,Seychelles,SC,SYC,690,,
+198,Sierra Leone,SL,SLE,694,,
+199,Singapore,SG,SGP,702,sg,google.com.sg
+200,Sint Maarten,SX,SXM,534,,
+201,Slovakia,SK,SVK,703,sk,google.sk
+202,Slovenia,SI,SVN,705,si,google.si
+203,Solomon Islands,SB,SLB,90,,
+204,Somalia,SO,SOM,706,,
+205,South Africa,ZA,ZAF,710,za,google.co.za
+206,South Georgia and the South Sandwich Islands,GS,SGS,239,,
+207,South Sudan,SS,SSD,728,,
+208,Spain,ES,ESP,724,es,google.es
+209,Sri Lanka,LK,LKA,144,lk,google.lk
+210,Sudan,SD,SDN,729,,
+211,Suriname,SR,SUR,740,,
+212,Svalbard and Jan Mayen,SJ,SJM,744,,
+213,Sweden,SE,SWE,752,se,google.se
+214,Switzerland,CH,CHE,756,ch,google.ch
+215,Syrian Arab Republic,SY,SYR,760,,
+216,Taiwan,TW,TWN,158,,
+217,Tajikistan,TJ,TJK,762,,
+218,"""Tanzania,  United Republic of""",TZ,TZA,834,,
+219,Thailand,TH,THA,764,th,google.co.th
+220,Timor-Leste,TL,TLS,626,,
+221,Togo,TG,TGO,768,,
+222,Tokelau,TK,TKL,772,,
+223,Tonga,TO,TON,776,,
+224,Trinidad and Tobago,TT,TTO,780,tt,google.tt
+225,Tunisia,TN,TUN,788,tn,google.tn
+226,Turkey,TR,TUR,792,tr,google.com.tr
+227,Turkmenistan,TM,TKM,795,,
+228,Turks and Caicos Islands,TC,TCA,796,,
+229,Tuvalu,TV,TUV,798,,
+230,Uganda,UG,UGA,800,,
+231,Ukraine,UA,UKR,804,ua,google.com.ua
+232,United Arab Emirates,AE,ARE,784,ae,google.ae
+233,United Kingdom,GB,GBR,826,uk,google.co.uk
+234,United States Minor Outlying Islands,UM,UMI,581,,
+235,United States,US,USA,840,us,google.com
+236,Uruguay,UY,URY,858,uy,google.com.uy
+237,Uzbekistan,UZ,UZB,860,,
+238,Vanuatu,VU,VUT,548,,
+239,Venezuela,VE,VEN,862,ve,google.co.ve
+240,Vietnam,VN,VNM,704,vn,google.com.vn
+241,Virgin Islands,VG,VGB,92,,
+242,Virgin Islands,VI,VIR,850,,
+243,Wallis and Futuna,WF,WLF,876,,
+244,Western Sahara,EH,ESH,732,,
+245,Yemen,YE,YEM,887,,
+246,Zambia,ZM,ZMB,894,zm,google.co.zm
+247,Zimbabwe,ZW,ZWE,716,zw,google.co.zw
+248,Åland Islands,AX,ALA,248,,
