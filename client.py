@@ -1,6 +1,7 @@
 import datetime
 import dateutil.relativedelta as rd
 import pandas as pd
+import numpy as np
 import requests
 import re
 from typing import List, Optional, Union
@@ -589,6 +590,43 @@ class SemRushClient:
         }
 
         return self.make_call(api_dict=api_dict)
+
+    def multi_domain_comparison(self,
+                                domain_list: List[str],
+                                database: str = None,
+                                export_columns: List[str] = None) -> Optional[pd.DataFrame]:
+
+        frames = []
+        for domain in domain_list:
+            domain_overview_df = self.domain_overview_history(domain=domain,
+                                                              database=database,
+                                                              display_limit=13,
+                                                              display_offset=0,
+                                                              display_sort="dt_desc",
+                                                              export_columns=export_columns)
+            frames.append((domain, domain_overview_df))
+
+        new_dicts = []
+        for _domain, _frame in frames:
+            _d = {'domain': _domain}
+            _columns = _frame.columns
+            for _col in _columns:
+                column = _frame[_col].astype(float)
+                for _month in (0, 1, 12):
+                    _d[_col + '_' + str(_month)] = column[_month]
+                _d[_col + '_mom'] = column[0] - column[1]
+                _d[_col + '_yoy'] = column[0] - column[12]
+                _d[_col + '_3month_trend'] = polyfit_trend(column[0:3])
+                _d[_col + '_12month_trend'] = polyfit_trend(column[0:12])
+
+            new_dicts.append(_d)
+
+        return pd.DataFrame(new_dicts)
+
+
+def polyfit_trend(data):
+    p = np.polyfit(np.arange(0, len(data)), data.to_numpy()[::-1], deg=1)
+    return p[0]
 
 
 def default_date():
