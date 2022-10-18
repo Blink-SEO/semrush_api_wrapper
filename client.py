@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import requests
 import re
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Tuple, Iterable
 from .database_utils import parse_database
 
 cost_per_line_dict = {
@@ -56,7 +56,8 @@ class SemRushClient:
 
     def make_call(self,
                   api_dict,
-                  raw_text: bool = False) -> Union[pd.DataFrame, str, None]:
+                  raw_text: bool = False,
+                  print_cost: bool = False) -> Union[Tuple[pd.DataFrame, int], str, None]:
 
         if "database" in api_dict.keys():
             api_dict['database'] = parse_database(database_code=api_dict.get('database'),
@@ -79,13 +80,14 @@ class SemRushClient:
             _df.dropna(axis=0, how='any', inplace=True)
             _call_cost = len(_df) * cost_per_line_dict.get(api_dict.get("type"), 0)
             self._cost += _call_cost
-            print(f"semrushapi_wrapper response cost {_call_cost} api credits")
+            if print_cost:
+                print(f"semrushapi_wrapper response cost {_call_cost} api credits")
             _df = clean_columns(_df)
             if 'trends' in _df.columns:
                 _df['sr_trends'] = _df['sr_trends'].apply(lambda s: [float(item) for item in s.split(",")])
-            return _df
+            return _df, _call_cost
         else:
-            return None
+            return None, 0
 
     def domain_organic_search_keywords(self,
                                        domain: str,
@@ -121,7 +123,8 @@ class SemRushClient:
         if display_positions is not None:
             api_dict["display_positions"] = display_positions
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def domain_paid_search_keywords(self,
                                     domain: str,
@@ -158,7 +161,8 @@ class SemRushClient:
         if display_positions is not None:
             api_dict["display_positions"] = display_positions
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def url_organic_search_keywords(self,
                                     url: str,
@@ -192,7 +196,8 @@ class SemRushClient:
         if display_filter is not None:
             api_dict["display_filter"] = display_filter
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def url_paid_search_keywords(self,
                                  url: str,
@@ -225,7 +230,8 @@ class SemRushClient:
         if display_filter is not None:
             api_dict["display_filter"] = display_filter
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def organic_competitors(self,
                             domain: str,
@@ -253,7 +259,8 @@ class SemRushClient:
             "display_date": display_date
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def paid_competitors(self,
                          domain: str,
@@ -281,7 +288,8 @@ class SemRushClient:
             "display_date": display_date
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def domain_vs_domain(self,
                          domains: List[str],
@@ -315,7 +323,8 @@ class SemRushClient:
         if display_filter is not None:
             api_dict["display_filter"] = display_filter
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def keyword_overview(self,
                          phrase: str,
@@ -338,7 +347,8 @@ class SemRushClient:
             "display_date": display_date
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def big_batch_keyword_overview(self,
                                    phrases: List[str],
@@ -388,7 +398,8 @@ class SemRushClient:
             "display_date": display_date
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def organic_results(self,
                         phrase: str,
@@ -413,7 +424,8 @@ class SemRushClient:
             "display_date": display_date
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def paid_results(self,
                      phrase: str,
@@ -438,7 +450,8 @@ class SemRushClient:
             "display_date": display_date
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def related_keywords(self,
                          phrase: str,
@@ -474,7 +487,8 @@ class SemRushClient:
         if display_positions is not None:
             api_dict["display_positions"] = display_positions
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def keyword_ads_history(self,
                             phrase: str,
@@ -495,7 +509,8 @@ class SemRushClient:
             "export_columns": export_columns,
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def broad_match_keyword(self,
                             phrase: str,
@@ -522,7 +537,8 @@ class SemRushClient:
         if display_filter is not None:
             api_dict["display_filter"] = display_filter
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def phrase_questions(self,
                          phrase: str,
@@ -549,7 +565,8 @@ class SemRushClient:
         if display_filter is not None:
             api_dict["display_filter"] = display_filter
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def keyword_difficulty(self,
                            phrase: str,
@@ -589,22 +606,35 @@ class SemRushClient:
             "export_columns": export_columns,
         }
 
-        return self.make_call(api_dict=api_dict)
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
 
     def multi_domain_comparison(self,
                                 domain_list: List[str],
                                 database: str = None,
                                 export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
+        if export_columns is None:
+            export_columns = ["Rk", "Or", "Xn", "Ot", "Oc", "Ad", "At", "Ac", "Dt", "FKn", "FPn"]
+
         frames = []
+        sr_cost = 0
         for domain in domain_list:
-            domain_overview_df = self.domain_overview_history(domain=domain,
-                                                              database=database,
-                                                              display_limit=13,
-                                                              display_offset=0,
-                                                              display_sort="dt_desc",
-                                                              export_columns=export_columns)
+            api_dict = {
+                "type": "domain_rank_history",
+                "domain": domain,
+                "database": database,
+                "display_limit": 13,
+                "display_offset": 0,
+                "display_sort": "dt_desc",
+                "export_columns": export_columns,
+            }
+
+            domain_overview_df, _call_cost = self.make_call(api_dict=api_dict, print_cost=False)
+            sr_cost += _call_cost
             frames.append((domain, domain_overview_df))
+
+        print(f"{len(frames)} semrushapi_wrapper responses: total cost {sr_cost} api credits")
 
         new_dicts = []
         for _domain, _frame in frames:
