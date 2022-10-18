@@ -57,7 +57,7 @@ class SemRushClient:
     def make_call(self,
                   api_dict,
                   raw_text: bool = False,
-                  print_cost: bool = False) -> Union[Tuple[pd.DataFrame, int], str, None]:
+                  print_cost: bool = False) -> Tuple[Union[pd.DataFrame, str, None], int]:
 
         if "database" in api_dict.keys():
             api_dict['database'] = parse_database(database_code=api_dict.get('database'),
@@ -68,12 +68,13 @@ class SemRushClient:
 
         if re.match(r"ERROR", response.text):
             print(response.text)
-            return api_call
-
-        if raw_text:
-            return response.text
+            return api_call, 0
 
         lines = response.text.split("\r\n")
+
+        if raw_text:
+            return response.text, len(lines) - 1
+
         items = [line.split(";") for line in lines]
         if len(items) > 1:
             _df = pd.DataFrame(items[1:], columns=items[0])
