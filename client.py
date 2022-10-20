@@ -611,7 +611,7 @@ class SemRushClient:
     def domain_overview_all(self,
                             domain: str,
                             display_date: str = None,
-                            display_limit: int = 25,
+                            display_limit: int = 10,
                             display_offset: int = 0,
                             display_sort: str = "ot_desc",
                             export_columns: List[str] = None) -> Optional[pd.DataFrame]:
@@ -666,6 +666,7 @@ class SemRushClient:
                                                   domain: str,
                                                   databases: List[str] = None,
                                                   display_limit: int = 50,
+                                                  display_offset: int = 0,
                                                   export_columns: List[str] = None) -> Optional[pd.DataFrame]:
 
         if databases is None:
@@ -685,7 +686,7 @@ class SemRushClient:
                 "database": database,
                 "display_daily": 1,
                 "display_limit": display_limit,
-                "display_offset": 0,
+                "display_offset": display_offset,
                 "display_sort": "dt_desc",
                 "export_columns": export_columns,
             }
