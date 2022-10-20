@@ -5,7 +5,17 @@ import numpy as np
 import requests
 import re
 from typing import List, Optional, Union, Tuple, Iterable
-from .database_utils import parse_database
+from .database_utils import parse_database, database_to_iso
+
+column_types_dict = {
+    'sr_rank': int,
+    'sr_organic_keywords': int,
+    'sr_organic_traffic': int,
+    'sr_organic_cost': int,
+    'sr_adwords_keywords': int,
+    'sr_adwords_traffic': int,
+    'sr_adwords_cost': int
+}
 
 cost_per_line_dict = {
     "domain_organic": 10,
@@ -76,19 +86,31 @@ class SemRushClient:
             return response.text, len(lines) - 1
 
         items = [line.split(";") for line in lines]
-        if len(items) > 1:
-            _df = pd.DataFrame(items[1:], columns=items[0])
-            _df.dropna(axis=0, how='any', inplace=True)
-            _call_cost = len(_df) * cost_per_line_dict.get(api_dict.get("type"), 0)
-            self._cost += _call_cost
-            if print_cost:
-                print(f"semrushapi_wrapper response cost {_call_cost} api credits")
-            _df = clean_columns(_df)
-            if 'trends' in _df.columns:
-                _df['sr_trends'] = _df['sr_trends'].apply(lambda s: [float(item) for item in s.split(",")])
-            return _df, _call_cost
-        else:
+        if len(items) <= 1:
             return None, 0
+
+        _df = pd.DataFrame(items[1:], columns=items[0])
+        _df.dropna(axis=0, how='any', inplace=True)
+        _call_cost = len(_df) * cost_per_line_dict.get(api_dict.get("type"), 0)
+        self._cost += _call_cost
+        if print_cost:
+            print(f"semrushapi_wrapper response cost {_call_cost} api credits")
+        _df = clean_columns(_df)
+        if 'sr_trends' in _df.columns:
+            _df['sr_trends'] = _df['sr_trends'].apply(lambda s: [float(item) for item in s.split(",")])
+
+        if 'sr_database' in _df.columns:
+            _df['iso_code'] = _df['sr_database'].apply(lambda _db: database_to_iso(_db)[0])
+            _df['mobile'] = _df['sr_database'].apply(lambda _db: database_to_iso(_db)[1])
+
+        if 'sr_date' in _df.columns:
+            _df['record_date'] = _df['sr_date'].apply(semrush_parse_date)
+
+        for _column, _dtype in column_types_dict.items():
+            if _column in _df.columns:
+                _df[_column] = _df[_column].astype(dtype=_dtype)
+
+        return _df, _call_cost
 
     def domain_organic_search_keywords(self,
                                        domain: str,
@@ -586,9 +608,36 @@ class SemRushClient:
 
         return self.make_call(api_dict=api_dict, raw_text=True)
 
+    def domain_overview_all(self,
+                            domain: str,
+                            display_date: str = None,
+                            display_limit: int = 25,
+                            display_offset: int = 0,
+                            display_sort: str = "ot_desc",
+                            export_columns: List[str] = None) -> Optional[pd.DataFrame]:
+
+        if export_columns is None:
+            export_columns = ['Db', 'Dt', 'Dn', 'Rk', 'Or', 'Ot', 'Oc', 'Ad', 'At', 'Ac', 'Sh', 'Sv', 'FKn', 'FPn']
+
+        api_dict = {
+            "type": "domain_ranks",
+            "domain": domain,
+            "display_limit": display_limit,
+            "display_offset": display_offset,
+            "display_sort": display_sort,
+            "export_columns": export_columns,
+        }
+
+        if display_date:
+            api_dict['display_date'] = display_date
+
+        dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
+
     def domain_overview_history(self,
                                 domain: str,
                                 database: str = None,
+                                display_daily: bool = False,
                                 display_limit: int = 50,
                                 display_offset: int = 0,
                                 display_sort: str = "dt_desc",
@@ -607,7 +656,49 @@ class SemRushClient:
             "export_columns": export_columns,
         }
 
+        if display_daily:
+            api_dict['display_daily'] = 1
+
         dataframe, cost = self.make_call(api_dict=api_dict)
+        return dataframe
+
+    def domain_overview_history_multiple_database(self,
+                                                  domain: str,
+                                                  databases: List[str] = None,
+                                                  display_limit: int = 50,
+                                                  export_columns: List[str] = None) -> Optional[pd.DataFrame]:
+
+        if databases is None:
+            databases = [self.default_database]
+
+        databases = [parse_database(_db) for _db in databases]
+
+        if export_columns is None:
+            export_columns = ["Rk", "Or", "Xn", "Ot", "Oc", "Ad", "At", "Ac", "Dt", "FKn", "FPn"]
+
+        frames = []
+        sr_cost = 0
+        for database in databases:
+            api_dict = {
+                "type": "domain_rank_history",
+                "domain": domain,
+                "database": database,
+                "display_daily": 1,
+                "display_limit": display_limit,
+                "display_offset": 0,
+                "display_sort": "dt_desc",
+                "export_columns": export_columns,
+            }
+            domain_overview_df, _call_cost = self.make_call(api_dict=api_dict, print_cost=False)
+            sr_cost += _call_cost
+
+            iso_code, is_mobile = database_to_iso(database)
+            domain_overview_df['country_iso_code'] = iso_code
+            domain_overview_df['mobile'] = is_mobile
+
+            frames.append(domain_overview_df)
+
+        dataframe = pd.concat(frames).reset_index(drop=True)
         return dataframe
 
     def multi_domain_comparison(self,
@@ -663,6 +754,12 @@ def polyfit_trend(data):
 def default_date():
     _d = datetime.datetime.today() + rd.relativedelta(months=-1)
     return _d.strftime("%Y%m%d")
+
+
+def semrush_parse_date(date_string: str) -> Optional[datetime.date]:
+    if not isinstance(date_string, str):
+        return None
+    return datetime.datetime.strptime(date_string, "%Y%m%d").date()
 
 
 def clean_columns(df: pd.DataFrame) -> pd.DataFrame:
