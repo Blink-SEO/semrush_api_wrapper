@@ -18,10 +18,13 @@ with open(os.path.dirname(__file__) + r'/mobile_database_lookup.csv', mode='r') 
 def parse_database(database_code: str,
                    mobile: bool = False,
                    if_none: str = 'us') -> Optional[str]:
+
     if database_code is None:
         database_code = if_none
-    if re.match(r"^[A-Z]{3}$", database_code):
-        database_code = iso_to_database(iso_code=database_code)
+    if m := re.match(r"^([A-Z]{3})(-mobile)?$", database_code):
+        database_code = ISO_DICT.get(m.group(1), 'zz')
+        if m.group(2):
+            mobile = True
 
     if mobile:
         mobile_code = f"mobile-{database_code}"

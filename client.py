@@ -702,6 +702,61 @@ class SemRushClient:
         dataframe = pd.concat(frames).reset_index(drop=True)
         return dataframe
 
+    def domain_overview_history_by_date(self,
+                                        domain: str,
+                                        databases: List[str],
+                                        start_date: datetime.date = None,
+                                        end_date: datetime.date = None,
+                                        export_columns: List[str] = None,
+                                        ensure_dates: bool = True) -> Optional[pd.DataFrame]:
+
+        # Determine the display_limit and display_offset values to use
+        _current_date = datetime.date.today()
+
+        if start_date is None:
+            start_date = _current_date
+        if end_date is None:
+            end_date = start_date
+
+        if isinstance(start_date, str):
+            start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()
+        if isinstance(end_date, str):
+            end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()
+
+        date_range = [start_date + datetime.timedelta(days=_i) for _i in range((end_date - start_date).days + 1)]
+
+        if start_date > _current_date:
+            raise ValueError("bad date range")
+
+        _display_limit: int = (_current_date - start_date).days + 1
+        _display_offset: int = (_current_date - end_date).days
+
+        if ensure_dates:
+            if datetime.datetime.now(datetime.timezone.utc).hour < 12:
+                # On 23 October, with display_limit=1, display_offset=0, we would get
+                # results for 23 Oct, so with display_limit=10, display_offset=5 we would get
+                # results for 14 Oct to 18 Oct.
+                # However, if the time is before 12:00 utc, we may end up with a situation where,
+                # some countries would still show the 22 Oct result for display_limit=1, so would
+                # show 13 Oct to 17 Oct for the given limits. We should therefore subtract 1 from
+                # display_offset so that 18 Oct is definitely included.
+                _display_offset -= 1
+            else:
+                # Else, we may have the opposite situation and thus need to increase display_limit
+                # by 1
+                _display_limit += 1
+
+        _display_offset = max(0, _display_offset)
+
+        dataframe = self.domain_overview_history_multiple_database(domain=domain,
+                                                                   databases=databases,
+                                                                   export_columns=export_columns,
+                                                                   display_offset=_display_offset,
+                                                                   display_limit=_display_limit)
+        dataframe = dataframe[dataframe['record_date'].isin(date_range)]
+
+        return dataframe.reset_index(drop=True)
+
     def multi_domain_comparison(self,
                                 domain_list: List[str],
                                 database: str = None,
